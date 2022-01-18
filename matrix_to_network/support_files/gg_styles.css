@@ -1,0 +1,663 @@
+* html {
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+
+body {
+  margin: 0px auto;
+}
+
+p {
+   padding-top: 5px;
+}
+
+table {
+   margin-top: 3px;
+   margin-left: 3px;
+   margin-right: 3px;
+   margin-bottom: 3px;
+}
+td {
+   vertical-align: top;
+}
+select {
+   margin-left: 5px;
+}
+pre {
+   margin-left: 15px;
+}
+
+#content {
+   background-color: #fff;
+   background: url("images/nori_head.jpg");
+   background-repeat: no-repeat;
+   background-position: top center;
+}
+
+#main {
+   width: 75%;
+   text-align: center;
+   margin: 0px auto;
+}
+
+#highlight {
+   margin-top: 25px;
+   font: normal 0.75em Arial, sans-serif;
+   text-align: left;
+   padding-bottom: 20px;
+}
+
+#maintext {
+   text-align: left;
+   margin-left: 5px;
+   padding-bottom: 10px;
+   font: bold 1.4em Arial, sans-serif;
+}
+
+
+#navo {
+   width: 800px;
+   position: relative;
+   margin: -1.7em 0 0.9em 0;
+   padding-top: 0px;
+   list-style: none;
+}
+#navo li {
+   float: left;
+}
+#logout {
+   float: right;
+   margin-right:40px;  
+}
+#navo li a {
+   display: block;
+   padding: 3px 24px;
+   text-transform: uppercase;
+   font: bold 0.8em Arial, sans-serif;
+   color: #630B0B;
+   border-right: 0px solid #ccc; 
+   text-decoration: none;
+}
+#navo li a:hover {
+   color: #FAD0D0;
+   background: #630B0B;
+}
+#important {
+   color: #FF0000;
+}
+#options {
+   background-color: #fad0d0;
+   padding: 8px;
+   font: bold 0.75em Arial, Verdana, sans-serif;
+   text-align: left;
+}
+
+#whiteTable {
+   margin-left: 0;
+   margin-right: auto;
+   margin-top: 5px;
+   text-align: left;
+   padding: 5px;
+   border-spacing: 10px;
+   margin-bottom: 5px;
+}
+#whiteTable td {
+   padding: 5px;
+}
+
+#sideMenu ul {
+   margin-left: 0; 
+   padding-left: 0;
+}
+
+#sideMenu li {
+   margin-top: 5px; 
+   color: #630B0B;
+   background: url("images/shortreds.gif");
+   padding: 10px;
+   font-weight: bold;
+   list-style: none;
+}
+
+#sideMenu a {
+   text-decoration: none;
+   color: #630B0B;
+}
+
+#sideMenu a:hover {
+   text-decoration: none;
+   color: #f00;
+}
+
+#porphData td {
+   margin-top: 0px;
+   color: #000000;
+   background-color: #FAD0D0;
+   padding: 10px;
+}
+
+#porphData a {
+   color: #000000;
+}
+
+#porphData a:hover {
+   color: #f00;
+}
+
+#normalTable {
+   margin-left: 0;
+   margin-right: auto;
+   margin-top: 5px;
+}
+
+#normalTable td {
+   margin-top: 5px;
+}
+
+
+#submain {
+   padding: 15px;
+   text-align: left;
+}
+
+#listTable {
+   margin-left: auto;
+   margin-right: auto;
+   background-color: #620B0B;
+   bodrder-spacing: 5px;
+}
+
+#keyword {
+   color: #630B0B;
+   background: url("images/shortreds.gif");
+  /* background-color: #630B0B; */
+   padding: 3px;
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+#keyword a { 
+   color: #630B0B;
+   text-decoration: none;
+}
+
+#keyword_noback {
+   font-weight: bold;
+   text-transform: uppercase;
+}
+#small {
+   color: #555555;
+   font: 0.75em 'Roboto', Arial;
+}
+
+#code {
+   font: 0.9em 'Droid Sans Mono', Arial;
+}
+
+
+#mainpage {
+   margin-top: 30px;
+/* background: url("images/longreds.gif"); */
+   background: url(images/porphyra_back.gif);
+   background-repeat: no-repeat;
+   background-position: bottom right;
+   padding: 35px;
+   padding-bottom: 160px;
+   text-align: left;
+   font: normal 1.3em 'Roboto', sans-serif;
+   font-weight:300;
+   line-height: 1.4;
+}
+
+#beauty {
+   color: #009; 
+   font: 2em 'Roboto', Book Antiqua, Arial, sans-serif;
+   line-height: 1.6;
+}
+
+#ital {
+	font: 1em helvetica-neue-thin-italic;
+	}
+
+#options ul {
+   list-style: none;
+   display: inline;
+}
+#options li {
+   display: inline;
+   font: normal 1em Arial, Verdana, sans-serif;
+   list-style: none;
+   margin-left: 0px;
+   padding-right: 5px;
+}
+
+#step {
+   color: #630B0B;
+   font-size:2em;
+   font-style:italic;font-weight:bold;
+   padding-right:5px;
+}
+
+#textbutton {
+   color: #fad0d0;
+   background-color: #630B0B;
+   padding:5px;
+   text-decoration: none;
+}
+#textbutton a {
+   color: #fad0d0;
+   text-decoration: none;
+}
+#bigbutton {
+   color: #fad0d0;
+   background-color: #630B0B;
+   padding:15px;
+   font: bold 1em Arial;
+}
+
+#bigbutton a {
+   color: #fad0d0;
+   text-decoration: none;
+   text-transform: uppercase;
+}
+
+#bigTable {
+   margin-top: 0px;
+   margin-left: auto;
+   margin-right: auto;
+   background: url(images/porphyra_back.gif);
+   background-repeat: no-repeat;
+   background-position: bottom right;
+   text-align: left;
+}
+
+#genomeTab {
+   vertical-align: top;
+   width: 259px;
+   padding: 2px;
+}
+#genomeTab h1, h2, h3 {
+   font: bold 0.8em Arial, Verdana, sans-serif;
+   margin-top: 3px;
+   padding: 2px;
+}
+#genomeTab h1 {
+   margin-left: 1px;
+   text-transform: uppercase;
+   background-color: #cecece;
+   margin-bottom:0;
+   margin-top: 6px;
+}
+#genomeTab h2 {
+   margin-left: 14px;
+   margin-bottom:3px;
+}
+#genomeTab h3 {
+   margin-left: 27px;
+   margin-bottom: 3px;
+}
+#genomeTab h4 {
+   font-style:italic;font-weight:bold;
+   font-family: Arial, Verdana, sans-serif;
+   font-size: 0.8em;
+   margin-bottom: 4px;
+   margin-top: 3px;
+   margin-left: 62px;
+   padding-top: 4px;
+   padding-bottom: 1px;
+}
+#genomeTab ul {
+   list-style: none;
+   margin-bottom: 0;
+   margin-top: 0;
+   font: italic 0.75em Arial, Verdana, sans-serif;
+   padding-bottom: 2px;
+}
+#genomeTab li {
+   padding:0px;   
+}
+
+/* Background images for each taxon group in the table */
+
+#alveolate {
+   background: url(images/alveolate.gif);
+   padding-top: 3px;
+   padding-bottom: 8px;
+}
+#chromista {
+   background: url(images/chromista.gif);
+   padding-top: 3px;
+   padding-bottom: 15px;
+}
+
+#reds {
+   background: url(images/reds.gif);
+   padding-top: 3px;
+   padding-bottom: 8px;
+}
+#glauco {
+   background: url(images/glauco.gif);
+   padding-top: 3px;
+   padding-bottom: 8px;
+}
+#green {
+   background: url(images/green.gif);
+   padding-top: 3px;
+   padding-bottom: 15px;
+}
+#excavate {
+   background: url(images/excavate.gif);
+   padding-top: 3px;
+   padding-bottom: 8px;
+}
+#rhizaria {
+   background: url(images/rhizaria.gif);
+   padding-top: 3px;
+   padding-bottom: 8px;
+}
+#amoebozoa {
+   background: url(images/amoebozoa.gif);
+   padding-top: 3px;
+   padding-bottom: 15px;
+}
+
+
+/* BLAST output background */
+
+#outputs {
+   width: 800px;
+   background-color: #fad0d0;
+   padding: 5px;
+   text-align: left;
+   word-break:break-all; 
+}
+
+#sequences {
+   text-align: left;
+   line-height: 0.62;
+   font: normal 0.6em;
+}
+
+#sequencePage {
+   border-spacing: 5px;
+   text-align: left;
+   line-height: 0.65;
+
+}
+
+#loginTable {
+   padding: 20px;
+   margin-top: 45px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 350;
+   background-color: #fad0d0;
+   padding-top: 3px;
+   padding-bottom: 8px;
+   font: normal 0.8em Arial, Verdana, sans-serif;
+}
+
+#loginTable td {
+   padding: 5px;
+}
+
+/* footer */
+
+#footer_inline {
+	color: #7e0919;
+	font: normal 0.65em Verdana, sans-serif;
+	margin-left: 5px;
+	padding-bottom: 15px;
+	float: left;
+	text-align: left;
+	}
+
+
+#footer_inline ul {
+	display: inline;
+	align: right;
+	padding-left: 30px; 
+	padding-right: 0em; 
+	}
+
+#footer_inline li {	
+	display: inline;
+	margin-left: 0em; 
+	padding: 0px 4px;
+	}
+
+
+
+
+
+
+
+#header_image_holde {
+	background-image:url("http://nbpweb.rutgers.edu/css/images/header.jpg");
+	background-color:#fff;
+	background-repeat:no-repeat;
+}
+#lab_link {
+	color:#000000;
+	font-size:16px;
+	text-decoration: none;
+}
+#lab_link a:link {
+	color:#000000;
+	font-size:16px;
+	text-decoration: none;
+}
+#lab_link a:visited {
+	color:#000000;
+	font-size:16px;
+	text-decoration: none;
+}
+#lab_link a:hover {
+	color:#000000;
+	font-size:16px;
+	text-decoration: underline;
+}
+#lab_link a:active {
+	color:#000000;
+	font-size:16px;
+	text-decoration: none;
+}
+form {margin:0;
+padding:0;
+}
+.arial10 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.arial12 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.arial16 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+.arial18 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.arial9 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+}
+.arial24 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+.fs14 {
+	font-size: 14px;
+}
+.fs16 {
+	font-size: 16px;
+}
+.fs18 {
+	font-size: 18px;
+}
+.fs24 {
+	font-size: 24px;
+}
+.fs28 {
+	font-size: 28px;
+}
+.fs36 {
+	font-size: 36px;
+}
+.fs42 {
+	font-size: 42px;
+}
+.bluecolor {
+	color: #0000FF;
+}
+.darkblue {
+		color: #0033CC;
+}
+.redcolor {
+		color: #FF0000;
+}
+.whitecolor {
+		color: #FFFFFF;
+}
+.blackcolor {
+		color: #000000;
+}
+.orangecolor {
+		color: #FCB600;
+}
+.txtstr {
+	font-weight: bold;
+}
+.verdana {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.oriental {
+	font-family: "Viner Hand ITC";
+}
+
+input.bton {
+   width:180px;
+   color:#EEEEEE;
+   font: bold 1em Arial, Helvetica, sans-serif;
+   padding: 4px;
+   margin-top: 5px;
+   background-color:#630B0B;
+   border:1px solid;
+   border-top-color:#DBDBD7;
+   border-left-color:#DBDBD7;
+   border-right-color:#9B9B99;
+   border-bottom-color:#9B9B99;
+}
+.nodec {
+	text-decoration: none;
+}
+.p_top {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 24px;
+/*	color: #959933;  */
+	padding:  0px 20px 10px 0px;
+	margin: 0px;
+	background: transparent url('images/dragonblast_independent_sm.png') top left;
+}
+
+.paramid {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	overflow: hidden;
+	clear: both;
+	background: transparent url('images/dragonblast_independent_sm.png') repeat-y top left;
+}
+.parabot {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 30px 0px 20px;
+	overflow: hidden;
+	height: 100%;
+	background: transparent url('images/dragonblast_independent_sb.png') no-repeat bottom left;
+}
+#txt1 {
+	width: 680px;
+	padding:  0px 10px 0px 60px;
+	overflow: visible;
+}
+
+#txt1 a:link {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#txt1 a:visited {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+#txt1 a:hover {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #f1941c;
+	font-weight: bold;
+	background-color:#FFFFFF;	
+}
+#txt1 a:active {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+#txt2 {
+	max-width: 680px;
+	min-width: 670px;
+	padding:  0px 10px 0px 60px;
+	overflow: visible;
+}
+
+#txt2 a:link {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#txt2 a:visited {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+#txt2 a:hover {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+	color: #f1941c;
+	font-weight: bold;
+	background-color:#FFFFFF;	
+}
+#txt2 a:active {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 12px;
+}
+.disclaimer {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.footerlinks a:link {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	color: #339999;
+}
+.footerlinks a:visited {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	color: #339999;
+}
+.footerlinks a:hover {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	color: #000000;
+}
+.footerlinks a:active {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	color: #339999;
+}

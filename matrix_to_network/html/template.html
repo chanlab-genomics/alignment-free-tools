@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://bioinformatics.org.au/tools/AFnetwork/ -->
+<html style="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
+    <script src="./support_files/jquery.min.js.download"></script>
+    <script type="text/javascript" src="./support_files/d3.js.download"></script>
+    <script type="text/javascript" src="./support_files/fisheye.js.download"></script>
+    <script type="text/javascript" src="./support_files/jquery-ui.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./support_files/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="./support_files/style.css">
+
+    <link href="./support_files/css" rel="stylesheet" type="text/css">
+    <link href="./support_files/css(1)" rel="stylesheet" type="text/css">
+    <link href="./support_files/css(2)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./support_files/gg_styles.css" type="text/css">
+
+    <title>Tree Visualizer</title>
+</head>
+
+<body>
+    <div id="main">
+
+        <div id="mainpage">
+
+            <span id="beauty">
+                Tree Visualizer
+            </span>
+            <br>
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </div>
+            <p></p>
+            <hr>
+
+
+            <script type="application/json" id="mis">
+
+{
+    "nodes": [
+        {
+            "name": "AEG",
+            "group": "AEG"
+        },
+        {
+            "name": "AEH",
+            "group": "AEH"
+        },
+        {
+            "name": "AFD",
+            "group": "AFD"
+        },
+        {
+            "name": "AFR",
+            "group": "AFR"
+        },
+        {
+            "name": "AGM",
+            "group": "AGM"
+        },
+        {
+            "name": "AHC",
+            "group": "AHC"
+        },
+        {
+            "name": "APG",
+            "group": "APG"
+        }
+    ],
+    "links": [
+        {
+            "source": 1,
+            "target": 0,
+            "value": 9.725716431931
+        },
+        {
+            "source": 2,
+            "target": 0,
+            "value": 9.730371462056
+        },
+        {
+            "source": 3,
+            "target": 0,
+            "value": 9.750294011288
+        },
+        {
+            "source": 4,
+            "target": 0,
+            "value": 9.71440029571
+        },
+        {
+            "source": 5,
+            "target": 0,
+            "value": 9.752827008576
+        },
+        {
+            "source": 6,
+            "target": 0,
+            "value": 9.741006860892
+        },
+        {
+            "source": 2,
+            "target": 1,
+            "value": 9.818214788555
+        },
+        {
+            "source": 3,
+            "target": 1,
+            "value": 9.75198371827
+        },
+        {
+            "source": 4,
+            "target": 1,
+            "value": 9.750884789563
+        },
+        {
+            "source": 5,
+            "target": 1,
+            "value": 9.820995579656
+        },
+        {
+            "source": 6,
+            "target": 1,
+            "value": 9.77898944703
+        },
+        {
+            "source": 3,
+            "target": 2,
+            "value": 9.792413809166
+        },
+        {
+            "source": 4,
+            "target": 2,
+            "value": 9.768273401565
+        },
+        {
+            "source": 5,
+            "target": 2,
+            "value": 9.852148088879
+        },
+        {
+            "source": 6,
+            "target": 2,
+            "value": 9.785459323579
+        },
+        {
+            "source": 4,
+            "target": 3,
+            "value": 9.739056590475
+        },
+        {
+            "source": 5,
+            "target": 3,
+            "value": 9.813275255056
+        },
+        {
+            "source": 6,
+            "target": 3,
+            "value": 9.79023858427
+        },
+        {
+            "source": 5,
+            "target": 4,
+            "value": 9.829796422035
+        },
+        {
+            "source": 6,
+            "target": 4,
+            "value": 9.760383469949
+        },
+        {
+            "source": 6,
+            "target": 5,
+            "value": 9.865780908671
+        }
+    ]
+}
+</script>
+
+            <form>
+                <h3>Threshold (min 0)<label for="rangeVal"></label><input type="range" id="thersholdSlider"
+                        name="points" min="0" max="10" step="0.5"
+                        oninput="threshold(this.value);document.getElementById(&#39;rangeValLabel&#39;).innerHTML = this.value">(max
+                    10) selected : <em id="rangeValLabel" style="font-style: normal;"></em></h3>
+            </form>
+            <div class="ui-widget">
+                <input id="search" class="ui-autocomplete-input" autocomplete="off">
+                <button type="button" onclick="searchNode()">Search</button>
+            </div>
+
+            <script type="text/javascript" src="./support_files/143_network.js.download"></script>
+
+        </div>
+    </div>
+
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+        style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions"
+        class="ui-helper-hidden-accessible"></span>
+</body>
+
+</html>
+

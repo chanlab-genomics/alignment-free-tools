@@ -29,7 +29,7 @@ AEH_red_40.fasta.done
 
 ## Distance Calculations
 
-The end goal is to create a distance tree, so first we need to compute all the pair-wise distances between each jackknifed sample. Computing the distance can be done using `jf_scripts\Calculate_D2S_mod.py`. Again, `jf_scripts\Calculate_D2S.py --help` does a pretty good job of explaining what command line arguments it's expecting, so here's it's output
+The end goal is to create a distance tree, so first we need to compute all the pair-wise distances between each jackknifed sample. Computing the distance can be done using `jellyfish\Calculate_D2S_mod.py`. Again, `jellyfish\Calculate_D2S.py --help` does a pretty good job of explaining what command line arguments it's expecting, so here's it's output
 ```
 usage: Calculate_D2S.py [-h] --kmerset1 KmerSet1.21mers.gz --kmerset1_freq
                         KmerSet1.21mers.charFreq --kmerset2 KmerSet2.21mers.gz
@@ -54,15 +54,15 @@ optional arguments:
 ```
 Here is an example of using `Calculate_D2S.py` between the outputs of `AEH_red_40.fasta` and `AEG_red_40.fasta`
 ```
-python2 ./calc_d2s/Calculate_D2S.py --kmerset1 AEG_red_40.fasta.21mer.nkc.gz --kmerset1_freq AEG_red_40.fasta.CharFreq --kmerset2 AEH_red_40.fasta.21mer.nkc.gz --kmerset2_freq AEH_red_40.fasta.CharFreq --D2S_out AEG-AEH.txt
+python2 calculate_d2s/Calculate_D2S.py --kmerset1 AEG_red_40.fasta.21mer.nkc.gz --kmerset1_freq AEG_red_40.fasta.CharFreq --kmerset2 AEH_red_40.fasta.21mer.nkc.gz --kmerset2_freq AEH_red_40.fasta.CharFreq --D2S_out AEG-AEH.txt
 ```
-If run successfully, this  commands should produce a single text file `AEG-AEH.txt`, containing some preamble and then the distance value preceded by a semi-colon. Again, doing this for each individual combination will be extremely time consuming. For this reason `.\calc_d2s\create_d2s_jobs.py` has been created to
+If run successfully, this  commands should produce a single text file `AEG-AEH.txt`, containing some preamble and then the distance value preceded by a semi-colon. Again, doing this for each individual combination will be extremely time consuming. For this reason `.\calculate_d2s\create_d2s_jobs.py` has been created to
 
 1. Automatically create job files for every combination (and creates output distance file names that are compatible with `phylip_amalg.py`)
 2. Submit the created job files
 3. Remove the created job files once submitted, if desired (as many hundreds of job files can be created accross multiple samples)
 
-The output of `python3 .\calc_d2s\create_d2s_jobs.py --help` is given below
+The output of `python3 .\calculate_d2s\create_d2s_jobs.py --help` is given below
 ```
 usage: create_d2s_jobs.py [-h] [--slurm_dir SLURM_DIR] --data_input_path DATA_INPUT_PATH --data_output_path DATA_OUTPUT_PATH [--group GROUP] [--index INDEX] [-s [SUBMIT]] [-t [TEMP]] [-d [DRY_RUN]]
 
@@ -85,17 +85,17 @@ optional arguments:
   -d [DRY_RUN], --dry_run [DRY_RUN]
                         If True the program will simulate job submission output text but will not submit the jobs.
 ```
-Note that `.\calc_d2s\create_d2s_jobs.py` assumes that all of the jellyfish outputs are stored in the same directory. Here's an example of `.\calc_d2s\create_d2s_jobs.py` in action
+Note that `.\calculate_d2s\create_d2s_jobs.py` assumes that all of the jellyfish outputs are stored in the same directory. Here's an example of `.\calculate_d2s\create_d2s_jobs.py` in action
 ```
-python3 calc_d2s/create_d2s_jobs.py --data_input_path ~/sample_1 --data_output_path ~/sample_1_D2S --temp T --submit T --dry_run F --index=1
+python3 calculate_d2s/create_d2s_jobs.py --data_input_path ~/sample_1 --data_output_path ~/sample_1_D2S --temp T --submit T --dry_run F --index=1
 ```
 For our above example, once all the jobs have completed after running the above example we should find the file `AEG-AEH.txt` in the directory `~/sample_1_D2S`.
 
 ## Distance Tree Creation
 
-Now for the part we've all been waiting for ... creating the distance tree! First however, we're going to need to make a distance matrix. Of course, you could manually to this yourself but this can be time consuming and is very prone to error. Instead if you have all of your distance files in the same directory with the file name format `[Gene name 1]-[Gene name 1].txt` (make sure that none of your gene names are more than 10 characters long!!) you can run `PHYLIP/phylip_amalg.py` on the folder to automatically generate the distance matrix for you. Here's the output of running `python3 PHYLIP/phylip_amalg.py --help`
+Now for the part we've all been waiting for ... creating the distance tree! First however, we're going to need to make a distance matrix. Of course, you could manually to this yourself but this can be time consuming and is very prone to error. Instead if you have all of your distance files in the same directory with the file name format `[Gene name 1]-[Gene name 1].txt` (make sure that none of your gene names are more than 10 characters long!!) you can run `distance_tree/phylip_amalg.py` on the folder to automatically generate the distance matrix for you. Here's the output of running `python3 distance_tree/phylip_amalg.py --help`
 ```
-usage: phylip_amalg.py [-h] --data DATA --matrix MATRIX
+usage: distance_tree/phylip_amalg.py [-h] --data DATA --matrix MATRIX
 
 Creates a distance matrix from individual distance files.
 
@@ -109,13 +109,28 @@ Pretty self explanatory. Once you have your distance matrix you will need to con
 The modified PHYLIP's neighbor program has the following invocation (and won't prompt you for any other arguments once running)
 ```
 neighbor [input-matrix-path] [outtree-path] [outfile-path]
+
 ```
+
+# Network visualization of distance matrix
+
+This will create a network visualisation from a PHYLIP distance matrix (see: <http://bioinformatics.org.au/tools/AFnetwork> for an example network visualisation). This is done by generating a html page that contains the nesseccary information from the matrix file to create the network visualiser.
+
+To run the program, all you need to do is provide the path to the phylip matrix as well as the output path for the new html page. A title for the html page may also be optinally provided. An example usage of the `create_vis.py` script is shown below.
+
+```bash
+python3 matrix_to_network/create_vis.py --phylip_path ./data/sample.txt --output_path ./test.html
+```
+
+The scripts usage is summaried in the output of running `create_vis.py` with the help flag switched on. To view the network visualiser, simply open the generated html file in a web browser of choice.
+
+NOTE: The generated html file must be run in the same directory as the `support_files` included in this repository.
 
 ## Jackknifing
 
 To build our jackknife tree we first need to produce some jackknife samples from our genome data (surprise surprise!). The jackknifing step mostly makes use of `jackknife.py` found in the top level directory. In short `jackknife.py` reads in a fasta file a spits out a reduced version. `jackknife.py --help` does a pretty good job of explaining what command line arguments it's expecting, so I've taken the liberty of copying and pasting the output of running `jackknife.py` with the `--help` flag here
 ```
-usage: jackknife.py [-h] --input_paths INPUT_PATHS [INPUT_PATHS ...] [--output_path OUTPUT_PATH] [-v] [--portion PORTION] [--chunk_size CHUNK_SIZE] [--threads THREADS]
+usage: jackknife/jackknife.py [-h] --input_paths INPUT_PATHS [INPUT_PATHS ...] [--output_path OUTPUT_PATH] [-v] [--portion PORTION] [--chunk_size CHUNK_SIZE] [--threads THREADS]
 
 Randomly removes a portion of data from a fasta file.
 
@@ -133,5 +148,5 @@ optional arguments:
 ```
 Here's an example use of `jackknife.py`
 ```
-python3 jackknife.py --input_path ~/AEH.fasta --output_path ~/jn_yeast --portion=40 --chunk_size=100 --threads=4
+python3 jackknife/jackknife.py --input_path ~/AEH.fasta --output_path ~/jn_yeast --portion=40 --chunk_size=100 --threads=4
 ```
