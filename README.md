@@ -1,34 +1,12 @@
-# Jackknifing Workflow
+# Alignment-Free Tools
 
-## Jackknifing
+To use the tool in this workflow, you will use the jellyfish program as well as a few custom purpose python scripts . This means you will either have to install the `jellyfish` program on your computer, or on you're working on a hpc, you could try running `module load jellyfish/*version*` or just `module load jellyfish` to load jellyfish (to check if they have jellyfish at all run `module avail` to view all availed modules).
 
-To build our jackknife tree we first need to produce some jackknife samples from our genome data (surprise surprise!). The jackknifing step mostly makes use of `jackknife.py` found in the top level directory. In short `jackknife.py` reads in a fasta file a spits out a reduced version. `jackknife.py --help` does a pretty good job of explaining what command line arguments it's expecting, so I've taken the liberty of copying and pasting the output of running `jackknife.py` with the `--help` flag here
-```
-usage: jackknife.py [-h] --input_paths INPUT_PATHS [INPUT_PATHS ...] [--output_path OUTPUT_PATH] [-v] [--portion PORTION] [--chunk_size CHUNK_SIZE] [--threads THREADS]
-
-Randomly removes a portion of data from a fasta file.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --input_paths INPUT_PATHS [INPUT_PATHS ...]
-                        A list of fasta files to perform the jacknifing process
-  --output_path OUTPUT_PATH
-                        A folder to write the reduced fasta files.
-  -v, --verbose         Include to run the script in verbose mode. Useful for checking progress. WARN: This may cause the program to run slower.
-  --portion PORTION     The portion of data to be removed. The default is a 40 percent reduction.
-  --chunk_size CHUNK_SIZE
-                        The size of the chunks that get randomly removed from sequences. Default is a chunk size of 100.
-  --threads THREADS     The number of threads used to run the jackknife algorithm. If 0 threads are specified then it will default to os.cpu_count().
-```
-Here's an example use of `jackknife.py`
-```
-python3 jackknife.py --input_path ~/AEH.fasta --output_path ~/jn_yeast --portion=40 --chunk_size=100 --threads=4
-```
-If you're going through this workflow by yourself, chances are you've got hundereds of genomes to jackknife across many different samples. To see how this process could be automated check `batch\array_jn\jn_array.sh` and `batch\array_jn\submit_jn_wait.sh`. The `batch\array_jn\jn_array.sh` file is a PBS job which produces a jackknife sample for each fasta file found in `ARRAY_TARGET` and saves the outputs to `OUTPUT_DIR`. You might want to change around the number of cpus, memory and walltime for the job file depending on how big/how many fasta files you have. The `batch\array_jn\submit_jn_wait.sh` will automatically submit multiple `batch\array_jn\jn_array.sh` jobs with different sample values.
+If you're going through this workflow by yourself, chances are you've got hundereds of genomes to jackknife across many different samples. To see how this process could be automated, in this case for jackknifing, check `batch\array_jn\jn_array.sh` and `batch\array_jn\submit_jn_wait.sh`. The `batch\array_jn\jn_array.sh` file is a PBS job which produces a jackknife sample for each fasta file found in `ARRAY_TARGET` and saves the outputs to `OUTPUT_DIR`. You might want to change around the number of cpus, memory and walltime for the job file depending on how big/how many fasta files you have. The `batch\array_jn\submit_jn_wait.sh` will automatically submit multiple `batch\array_jn\jn_array.sh` jobs with different sample values.
 
 ## Jellyfish
 
-The next step in this workflow is to use jellyfish as well as a few custom purpose python scripts to perform some analysis on our jackknifed samples. This means you will either have to install the `jellyfish` program on your computer, or on you're working on a hpc, you could try running `module load jellyfish/*version*` or just `module load jellyfish` to load jellyfish (to check if they have jellyfish at all run `module avail` to view all availed modules). Once jellyfish has been setup you will need to run the following string of commands on each jacknified fasta file
+Once jellyfish has been setup you will need to run the following string of commands on each fasta file
 ```
 
 k=*kmer-count* # eg k=21
@@ -131,4 +109,29 @@ Pretty self explanatory. Once you have your distance matrix you will need to con
 The modified PHYLIP's neighbor program has the following invocation (and won't prompt you for any other arguments once running)
 ```
 neighbor [input-matrix-path] [outtree-path] [outfile-path]
+```
+
+## Jackknifing
+
+To build our jackknife tree we first need to produce some jackknife samples from our genome data (surprise surprise!). The jackknifing step mostly makes use of `jackknife.py` found in the top level directory. In short `jackknife.py` reads in a fasta file a spits out a reduced version. `jackknife.py --help` does a pretty good job of explaining what command line arguments it's expecting, so I've taken the liberty of copying and pasting the output of running `jackknife.py` with the `--help` flag here
+```
+usage: jackknife.py [-h] --input_paths INPUT_PATHS [INPUT_PATHS ...] [--output_path OUTPUT_PATH] [-v] [--portion PORTION] [--chunk_size CHUNK_SIZE] [--threads THREADS]
+
+Randomly removes a portion of data from a fasta file.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_paths INPUT_PATHS [INPUT_PATHS ...]
+                        A list of fasta files to perform the jacknifing process
+  --output_path OUTPUT_PATH
+                        A folder to write the reduced fasta files.
+  -v, --verbose         Include to run the script in verbose mode. Useful for checking progress. WARN: This may cause the program to run slower.
+  --portion PORTION     The portion of data to be removed. The default is a 40 percent reduction.
+  --chunk_size CHUNK_SIZE
+                        The size of the chunks that get randomly removed from sequences. Default is a chunk size of 100.
+  --threads THREADS     The number of threads used to run the jackknife algorithm. If 0 threads are specified then it will default to os.cpu_count().
+```
+Here's an example use of `jackknife.py`
+```
+python3 jackknife.py --input_path ~/AEH.fasta --output_path ~/jn_yeast --portion=40 --chunk_size=100 --threads=4
 ```
